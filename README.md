@@ -85,9 +85,9 @@ Le tableau ci-dessous recense l'ensemble des données élémentaires nécessaire
 
 ## Note sur le stockage de données a contrainte
 
-Certains champs ont des champs a contrainte car ils ont un nombre fini et connu de choix possibles, par exemple : Le statut du cycle de vie du véhicule. 
+Certains champs ont des champs a contrainte car ils ont un nombre fini et connu de valeur possibles, par exemple : Le statut du cycle de vie du véhicule. 
 
-Ce champ possède un nombre fini et connu de possibilités :
+Ce champ possède un nombre fini et connu de valeur possible :
 - En attente reconditionnement
 - En recoditionnement atelier
 - En vente
