@@ -1,44 +1,39 @@
-## Miniprojet 1 Database
+# Miniprojet 1 - Conception de Base de Données (MERISE)
 
+## Contexte & Cahier des charges
 
-#### Prompt initial 
-
+### Prompt initial
 > Tu travailles dans le domaine de la distribution automobile et de la vente de véhicules d'occasion (VO) reconditionnés multimarques. Ton entreprise a comme activité de racheter, reconditionner, exposer et vendre des véhicules d'occasion à des particuliers ou à des professionnels, à travers un réseau de concessions physiques et une vitrine digitale. C’est une entreprise comme Autosphere, Aramisauto ou Autohero. Des données ont été collectées sur les véhicules en stock (caractéristiques, état, visuels et cycle de vie), les points de vente physiques, le personnel commercial et administratif, ainsi que les clients acheteurs et les actes de vente. Inspire-toi du site web et du réseau de concessions du groupe Autosphere (autosphere.fr).
-
+>
 > Ton entreprise veut appliquer MERISE pour concevoir un système d'information. Tu es chargé de la partie analyse, c’est-à-dire de collecter les besoins auprès de l’entreprise. Elle a fait appel à un étudiant en ingénierie informatique pour réaliser ce projet, tu dois lui fournir les informations nécessaires pour qu’il applique ensuite lui-même les étapes suivantes de conception et développement de la base de données.
-
-> D’abord, établis les règles de gestions des données de ton entreprise, sous la forme d'une liste à puce. Elle doit correspondre aux informations que fournit quelqu’un qui connaît le fonctionnement de l’entreprise, mais pas comment se construit un système d’information.
-
+>
+> D’abord, établis les règles de gestion des données de ton entreprise, sous la forme d'une liste à puces. Elle doit correspondre aux informations que fournit quelqu’un qui connaît le fonctionnement de l’entreprise, mais pas comment se construit un système d’information.
+>
 > Ensuite, à partir de ces règles, fournis un dictionnaire de données brutes avec les colonnes suivantes, regroupées dans un tableau : signification de la donnée, type, taille en nombre de caractères ou de chiffres. Il doit y avoir entre 25 et 35 données. Il sert à fournir des informations supplémentaires sur chaque donnée (taille et type) mais sans a priori sur comment les données vont être modélisées ensuite.
-
-> Fournis donc les règles de gestion et le dictionnaire de données.
-
-
-### Cahier des charges 
-
-#### 1. Règles de gestion (Métier)
-
-*   Chaque véhicule d'occasion qui entre dans notre réseau possède un numéro de série unique au monde (numéro de châssis / VIN) et une plaque d'immatriculation.
-*   Pour chaque véhicule, on renseigne ses informations techniques et commerciales : la marque, le modèle, la version ou finition précise, l'année de première immatriculation, la couleur, le type d'énergie (essence, diesel, hybride, 100 % électrique), le type de transmission (boîte manuelle ou automatique) et la puissance fiscale en chevaux fiscaux.
-*   Le kilométrage réel affiché au compteur est relevé et certifié à l'entrée du véhicule dans notre parc.
-*   Chaque véhicule possède un prix de vente affiché toutes taxes comprises (TTC), non négociable sur la vitrine digitale.
-*   Un véhicule traverse plusieurs étapes dans son cycle de vie ; il a donc un statut opérationnel précis à tout moment (ex. : *En arrivage*, *En reconditionnement atelier*, *En stock / En ligne*, *Réservé*, *Vendu*, *Livré*).
-*   Pour alimenter le catalogue en ligne (vitrine web à la façon d'Autosphere), plusieurs photographies numériques sont prises pour chaque véhicule une fois son reconditionnement terminé. Chaque photo dispose d'un lien d'accès et d'un rang d'affichage (pour définir la vue principale de face, le profil, l'habitacle, etc.).
-*   À un instant donné, un véhicule en stock est rattaché physiquement à un point de vente précis (concession ou centre de reconditionnement/hub).
-*   Chaque concession du réseau est repérée par son nom commercial, dispose d'une adresse géographique complète (rue, code postal, ville) et d'une ligne téléphonique directe d'accueil.
-*   Notre personnel (conseillers commerciaux, préparateurs, secrétariat de livraison) est identifié par un matricule interne. Pour chaque collaborateur, on conserve son nom, son prénom, son adresse e-mail professionnelle ainsi que sa fonction (poste occupé).
-*   Chaque collaborateur est affecté administrativement à une concession principale du réseau.
-*   Nos clients peuvent être des particuliers ou des professionnels (sociétés, artisans). Nous enregistrons leur identité (nom ou raison sociale, prénom pour les particuliers), leurs coordonnées de contact direct (numéro de téléphone mobile/fixe, e-mail) et leur adresse postale complète.
-*   Lorsqu'un accord est conclu pour l'achat d'un véhicule, un bon de commande officiel est généré avec une référence unique et sa date d'établissement.
-*   Un bon de commande porte systématiquement sur un seul véhicule d'occasion identifié (les véhicules d'occasion étant des pièces uniques en stock).
-*   Chaque bon de commande est conclu avec un client unique et géré par un unique conseiller commercial référent.
-*   Le bon de commande précise la solution de règlement retenue (comptant, crédit classique, location avec option d'achat - LOA) ainsi que la date prévisionnelle ou confirmée de livraison au client.
 
 ---
 
-#### 2. Dictionnaire de données brutes
+### 1. Règles de gestion (Métier)
 
-Le tableau ci-dessous recense l'ensemble des données élémentaires nécessaires à notre activité opérationnelle, sans préjuger de la manière dont elles seront découpées ou reliées dans les futurs modèles conceptuels.
+* Chaque véhicule d'occasion qui entre dans notre réseau possède un numéro de série unique au monde (numéro de châssis / VIN) et une plaque d'immatriculation.
+* Pour chaque véhicule, on renseigne ses informations techniques et commerciales : la marque, le modèle, la version ou finition précise, l'année de première immatriculation, la couleur, le type d'énergie (essence, diesel, hybride, 100 % électrique), le type de transmission (boîte manuelle ou automatique) et la puissance fiscale en chevaux fiscaux.
+* Le kilométrage réel affiché au compteur est relevé et certifié à l'entrée du véhicule dans notre parc.
+* Chaque véhicule possède un prix de vente affiché toutes taxes comprises (TTC), non négociable sur la vitrine digitale.
+* Un véhicule traverse plusieurs étapes dans son cycle de vie ; il a donc un statut opérationnel précis à tout moment (ex. : *En arrivage*, *En reconditionnement atelier*, *En stock / En ligne*, *Réservé*, *Vendu*, *Livré*).
+* Pour alimenter le catalogue en ligne (vitrine web à la façon d'Autosphere), plusieurs photographies numériques sont prises pour chaque véhicule une fois son reconditionnement terminé. Chaque photo dispose d'un lien d'accès et d'un rang d'affichage (pour définir la vue principale de face, le profil, l'habitacle, etc.).
+* À un instant donné, un véhicule en stock est rattaché physiquement à un point de vente précis (concession ou centre de reconditionnement/hub).
+* Chaque concession du réseau est repérée par son nom commercial, dispose d'une adresse géographique complète (rue, code postal, ville) et d'une ligne téléphonique directe d'accueil.
+* Notre personnel (conseillers commerciaux, préparateurs, secrétariat de livraison) est identifié par un matricule interne. Pour chaque collaborateur, on conserve son nom, son prénom, son adresse e-mail professionnelle ainsi que sa fonction (poste occupé).
+* Chaque collaborateur est affecté administrativement à une concession principale du réseau.
+* Nos clients peuvent être des particuliers ou des professionnels (sociétés, artisans). Nous enregistrons leur identité (nom ou raison sociale, prénom pour les particuliers), leurs coordonnées de contact direct (numéro de téléphone mobile/fixe, e-mail) et leur adresse postale complète.
+* Lorsqu'un accord est conclu pour l'achat d'un véhicule, un bon de commande officiel est généré avec une référence unique et sa date d'établissement.
+* Un bon de commande porte systématiquement sur un seul véhicule d'occasion identifié (les véhicules d'occasion étant des pièces uniques en stock).
+* Chaque bon de commande est conclu avec un client unique et géré par un unique conseiller commercial référent.
+* Le bon de commande précise la solution de règlement retenue (comptant, crédit classique, location avec option d'achat - LOA) ainsi que la date prévisionnelle ou confirmée de livraison au client.
+
+---
+
+### 2. Dictionnaire de données brutes
 
 | Signification de la donnée | Type | Taille en nombre de caractères ou de chiffres |
 | :--- | :--- | :--- |
@@ -81,52 +76,93 @@ Le tableau ci-dessous recense l'ensemble des données élémentaires nécessaire
 
 *(Total : 36 données élémentaires recouvrant les aspects véhicules, photos, concessions, personnel, clients et transactions).*
 
+---
+
+## 3. Modèle Conceptuel de Données (MCD)
+
+Le modèle conceptuel traduit directement les règles de gestion :
+* **Vehicule (0,n) --- [Illustre] --- (1,1) Photo** : un véhicule dispose d'un jeu de photographies ordonnées.
+* **Concession (0,n) --- [Rattachement stock] --- (1,1) Vehicule** : chaque véhicule est localisé dans une concession précise.
+* **Concession (1,n) --- [Affiliation] --- (1,1) Employe** : un employé est affecté à un point de vente.
+* **Bon de commande** est modélisé sous la forme d'une **entité propre** reliée par des associations binaires :
+  * `(1,1)` vers `Client` et `(0,n)` côté Client *(un bon a un seul acheteur ; un client peut commander plusieurs véhicules)*.
+  * `(1,1)` vers `Employe` et `(0,n)` côté Employe *(un bon est suivi par un conseiller référent)*.
+  * `(1,1)` vers `Vehicule` et `(0,1)` côté Vehicule *(un véhicule d'occasion étant unique, il est vendu 0 ou 1 fois)*.
+
+![Schéma MCD](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/raw/branch/main/MCD.png)
+
+---
+
+## 4. Modèle Logique de Données (MLD)
+
+### Format textuel normalisé (Merise)
+* Clé primaire soulignée / en gras (`*`).
+* Clé étrangère précédée d'un dièse (`#`).
+
+| Table (Relation) | Attributs (* = Clé primaire, # = Clé étrangère) |
+| :--- | :--- |
+| **Concession** | **\*Nom_commercial**, Adresse_postale, Code_postal, Ville, Telephone |
+| **Vehicule** | **\*VIN**, Immatriculation, Marque, Modele, Version_Finition, Date_PMC, Kilometrage, Energie, Transmission, Puissance, Couleur, Prix_de_vente_TTC, Cycle_de_vie, **#Nom_commercial** |
+| **Employe** | **\*Matricule**, Nom, Prenom, Email_pro, Fonction, **#Nom_commercial** |
+| **Client** | **\*Reference_unique**, Statut_juridique, Nom, Prenom, Telephone, Email, Adresse_postale |
+| **Bon_de_commande** | **\*Reference**, Date_d_emission, Mode_de_financement, Date_de_livraison, **#Matricule**, **#Reference_unique**, **#VIN** |
+| **Photo** | **\*id_photo**, URL, rang, **#VIN** |
+
+![Schéma MLD Looping](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/raw/branch/main/MLD.png)
 
 
-## Note sur le stockage de données a contrainte
+---
 
-Certains champs ont des champs a contrainte car ils ont un nombre fini et connu de valeur possibles, par exemple : Le statut du cycle de vie du véhicule. 
+## 5. Justification de la Forme Normale (3FN)
 
-Ce champ possède un nombre fini et connu de valeur possible :
-- En attente reconditionnement
-- En recoditionnement atelier
-- En vente
-- Réservé
-- Vendu 
+Le schéma relationnel produit respecte les règles de la **3ème Forme Normale (3FN)** :
 
-Le stockage de ce type de données sous forme étendue en `VARCHAR` n'est pas la solution la plus optimisée. 
+1. **1ère Forme Normale (1FN) :** Tous les attributs sont atomiques (non sécables, aucune liste ou tableau dans un champ) et chaque relation possède une clé primaire identifiante claire.
+2. **2ème Forme Normale (2FN) :** L'ensemble des clés primaires sont formées d'un **attribut simple unique** (`VIN`, `Nom_commercial`, `Matricule`, `Reference`, `Reference_unique`, `id_photo`). Il n'y a donc aucune dépendance fonctionnelle partielle vis-à-vis d'une clé composite.
+3. **3ème Forme Normale (3FN) :** Tout attribut non-clé dépend directement de la clé primaire et d'aucun autre attribut non-clé.
+   * *Note théorique :* On pourrait isoler les dépendances `Code_postal` $\rightarrow$ `Ville` ou `Modele` $\rightarrow$ `Marque` dans des tables de référence annexes, mais dans le contexte du cahier des charges d'un réseau VO multimarque, cette structure évite des jointures superflues tout en conservant une intégrité parfaite.
 
-Ici la méthode MERISE et le contexte académique nous impose de créer une base de donnée avec des champs énnormes, mais "dans la vraie vie", on stocke plutot un slug ou un numéro qu'on remplace a la volée dans le code de l'application client. 
+---
 
-L'avantage que ca nous donne c'est que si notre entreprise s'étend a l'étranger, par exemple, il nous suffit d'adapter le code de notre page web pour fournir un site dans la langue du pays, a partir du slug. Meme chose si le département marketing souhaite changer le nom d'un champ. 
+## 6. Modèle Physique de Données (MPD / LDD SQL)
 
-Il suffit de changer le code de la page web, pas le contenu du champ concerné pour toutes les entrées. 
+cf. [scheme.sql](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/src/branch/main/scheme.sql)
 
-L'autre avantage est que ca accélère les transactions et ca réduit la taille générale de la base de données sur le disque. 
+---
 
-Voici un exemple d'implémentation en PHP pour l'exemple ci dessus :
+## 7. Jeu de données de test
 
-```php
-[...]
+cf. [test_data.sql](aaa)
+
+---
+
+## 8. Note sur le stockage de données à contraintes (Enjeux réels vs académiques)
+
+Certains champs possèdent un nombre fini et connu de valeurs possibles, par exemple le statut du cycle de vie du véhicule (En attente, Reconditionnement atelier, En stock / En ligne, Réservé, Vendu, Livré).
+
+Le stockage de ce type de données sous forme étendue en `VARCHAR` n'est pas la solution la plus optimisée en production logicielle. Bien que la modélisation Merise académique impose des types textuels pour refléter fidèlement le dictionnaire de données métier, une architecture logicielle moderne privilégie un identifiant compact `TINYINT` ou un code court (slug / enum) pour plusieurs raisons :
+
+Performances et empreinte mémoire : Un entier sur 1 octet (`TINYINT`) allège considérablement la table et les index d'arbre (B-Tree), accélérant les filtres et tris SQL.
+Internationalisation (i18n) et évolutivité : En cas d'expansion à l'international ou de changement de formulation par le marketing, la base de données reste inchangée : seul le mapping applicatif est adapté.
+Exemple d'implémentation applicative moderne (PHP 8+) :
+
+```php 
 $lifecycleLabel = match (intval($row['Cycle_de_vie'])) {
-    1 => 'En attente recoditionnement',
-    2 => 'En recoditionnement atelier',
-    3 => 'En vente',
+    1 => 'En attente reconditionnement',
+    2 => 'Reconditionnement atelier',
+    3 => 'En stock / En ligne',
     4 => 'Réservé',
     5 => 'Vendu',
+    6 => 'Livré',
     default => 'Inconnu',
 };
 
-echo "<div class='energy'>Statut du véhicule : {$lifecycleyLabel}</div>";
-[...]
+echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 ```
 
+---
 
+## Espace de travail utilisé
 
-
-### Espace de travail utilisé 
-
-https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
-
-
-
+- Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
+- Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver.
