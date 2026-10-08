@@ -11,6 +11,12 @@
 >
 > Ensuite, à partir de ces règles, fournis un dictionnaire de données brutes avec les colonnes suivantes, regroupées dans un tableau : signification de la donnée, type, taille en nombre de caractères ou de chiffres. Il doit y avoir entre 25 et 35 données. Il sert à fournir des informations supplémentaires sur chaque donnée (taille et type) mais sans a priori sur comment les données vont être modélisées ensuite.
 
+
+> [!IMPORTANT]
+> Nous ne sommes en aucun cas affilié aux marques que nous citons dans notre projet.
+> Autosphere, Aramisauto et Autohero sont des marques déposées qui appartiennent a leurs propriétaires respectifs. 
+
+
 ---
 
 ### 1. Règles de gestion (Métier)
@@ -166,9 +172,3 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 - Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
 - Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver.
-
-## Legal 
-
-> [!IMPORTANT]
-> Nous ne sommes en aucun cas affilié aux marques que nous citons dans notre projet.
-> Autosphere, Aramisauto et Autohero sont des marques déposées qui appartiennent a leurs propriétaires respectifs. 
