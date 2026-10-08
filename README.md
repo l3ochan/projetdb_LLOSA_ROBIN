@@ -138,7 +138,8 @@ cf. [scheme.sql](db/scheme.sql)
 
 ## 7. Jeu de données de test
 
-cf. [test_data.sql](db/test_data.sql)
+cf. [test_data.sql](db/test_data.sql)  
+dump de la base de données de test [link](db/dump-td-202610080919.sql)
 
 ---
 
