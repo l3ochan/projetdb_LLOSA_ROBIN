@@ -23,4 +23,4 @@ services:
       MARIADB_PASSWORD: ${DB_USR_PW}
     volumes:
       - mariadb-data:/var/lib/mysql
-      - /shared:/var/www/Nekocorp-User-data/EFREI-db-td-shared
+      - /shared:${COMMON_PATH}/EFREI-db-td-shared
