@@ -80,3 +80,10 @@ Le tableau ci-dessous recense l'ensemble des données élémentaires nécessaire
 | Date de livraison convenue ou effective | Date | 10 caractères (AAAA-MM-JJ) |
 
 *(Total : 36 données élémentaires recouvrant les aspects véhicules, photos, concessions, personnel, clients et transactions).*
+
+
+
+
+### Espace de travail utilisé 
+
+https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
