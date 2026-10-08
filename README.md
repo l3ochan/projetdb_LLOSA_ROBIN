@@ -83,7 +83,50 @@ Le tableau ci-dessous recense l'ensemble des données élémentaires nécessaire
 
 
 
+## Note sur le stockage de données a contrainte
+
+Certains champs ont des champs a contrainte car ils ont un nombre fini et connu de choix possibles, par exemple : Le statut du cycle de vie du véhicule. 
+
+Ce champ possède un nombre fini et connu de possibilités :
+- En attente reconditionnement
+- En recoditionnement atelier
+- En vente
+- Réservé
+- Vendu 
+
+Le stockage de ce type de données sous forme étendue en `VARCHAR` n'est pas la solution la plus optimisée. 
+
+Ici la méthode MERISE et le contexte académique nous impose de créer une base de donnée avec des champs énnormes, mais "dans la vraie vie", on stocke plutot un slug ou un numéro qu'on remplace a la volée dans le code de l'application client. 
+
+L'avantage que ca nous donne c'est que si notre entreprise s'étend a l'étranger, par exemple, il nous suffit d'adapter le code de notre page web pour fournir un site dans la langue du pays, a partir du slug. Meme chose si le département marketing souhaite changer le nom d'un champ. 
+
+Il suffit de changer le code de la page web, pas le contenu du champ concerné pour toutes les entrées. 
+
+L'autre avantage est que ca accélère les transactions et ca réduit la taille générale de la base de données sur le disque. 
+
+Voici un exemple d'implémentation en PHP pour l'exemple ci dessus 
+
+```php
+[...]
+$lifecycleLabel = match (intval($row['Cycle_de_vie'])) {
+    1 => 'En attente recoditionnement',
+    2 => 'En recoditionnement atelier',
+    3 => 'En vente',
+    4 => 'Réservé',
+    5 => 'Vendu',
+    default => 'Inconnu',
+};
+
+echo "<div class='energy'>Statut du véhicule : {$lifecycleyLabel}</div>";
+[...]
+```
+
+
+
 
 ### Espace de travail utilisé 
 
 https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
+
+
+
