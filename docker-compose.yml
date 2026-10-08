@@ -1,0 +1,26 @@
+version: '3.8'
+
+networks:
+  kasm-dev1:
+    external: true
+
+volumes:
+  mariadb-data:
+
+services:
+  # 1. Le conteneur de données (SGBD)
+  db:
+    image: mariadb:10.11
+    container_name: sgbd-td
+    restart: unless-stopped
+    networks:
+      kasm-dev1: 
+        ipv4_address: 172.52.0.2
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PW}
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USR}
+      MARIADB_PASSWORD: ${DB_USR_PW}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - /shared:/var/www/Nekocorp-User-data/EFREI-db-td-shared
