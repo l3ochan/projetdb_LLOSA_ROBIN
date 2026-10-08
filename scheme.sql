@@ -14,7 +14,7 @@ CREATE TABLE Vehicule(
    Modele VARCHAR(30),
    Version_Finition VARCHAR(50),
    Date_PMC DATE,
-   Kilometrage SMALLINT,
+   Kilometrage INT,
    Energie VARCHAR(20),
    Transmission VARCHAR(15),
    Puissance SMALLINT,
