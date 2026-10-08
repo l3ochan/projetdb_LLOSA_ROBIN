@@ -66,7 +66,7 @@ CREATE TABLE Bon_de_commande(
 CREATE TABLE Photo(
    id_photo VARCHAR(10),
    URL VARCHAR(255),
-   rang BYTE,
+   rang DECIMAL(2,0),
    VIN VARCHAR(17) NOT NULL,
    PRIMARY KEY(id_photo),
    FOREIGN KEY(VIN) REFERENCES Vehicule(VIN)
