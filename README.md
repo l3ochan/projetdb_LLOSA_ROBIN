@@ -89,7 +89,7 @@ Le modèle conceptuel traduit directement les règles de gestion :
   * `(1,1)` vers `Employe` et `(0,n)` côté Employe *(un bon est suivi par un conseiller référent)*.
   * `(1,1)` vers `Vehicule` et `(0,1)` côté Vehicule *(un véhicule d'occasion étant unique, il est vendu 0 ou 1 fois)*.
 
-![Schéma MCD](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/raw/branch/main/MCD.png)
+![Schéma MCD](MCD.png)
 
 ---
 
@@ -108,7 +108,7 @@ Le modèle conceptuel traduit directement les règles de gestion :
 | **Bon_de_commande** | **\*Reference**, Date_d_emission, Mode_de_financement, Date_de_livraison, **#Matricule**, **#Reference_unique**, **#VIN** |
 | **Photo** | **\*id_photo**, URL, rang, **#VIN** |
 
-![Schéma MLD Looping](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/raw/branch/main/MLD.png)
+![Schéma MLD Looping](MLD.png)
 
 
 ---
@@ -126,7 +126,7 @@ Le schéma relationnel produit respecte les règles de la **3ème Forme Normale 
 
 ## 6. Modèle Physique de Données (MPD / LDD SQL)
 
-cf. [scheme.sql](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/src/branch/main/scheme.sql)
+cf. [scheme.sql](scheme.sql)
 
 ---
 
