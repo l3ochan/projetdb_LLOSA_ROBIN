@@ -166,3 +166,9 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 - Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
 - Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver.
+
+## Legal 
+
+> [!IMPORTANT]
+> Nous ne sommes en aucun cas affilié aux marques que nous citons dans notre projet.
+> Autosphere, Aramisauto et Autohero sont des marques déposées qui appartiennent a leurs propriétaires respectifs. 
