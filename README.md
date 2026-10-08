@@ -104,7 +104,7 @@ Il suffit de changer le code de la page web, pas le contenu du champ concerné p
 
 L'autre avantage est que ca accélère les transactions et ca réduit la taille générale de la base de données sur le disque. 
 
-Voici un exemple d'implémentation en PHP pour l'exemple ci dessus 
+Voici un exemple d'implémentation en PHP pour l'exemple ci dessus :
 
 ```php
 [...]
