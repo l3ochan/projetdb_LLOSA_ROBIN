@@ -132,7 +132,7 @@ cf. [scheme.sql](scheme.sql)
 
 ## 7. Jeu de données de test
 
-cf. [test_data.sql](aaa)
+cf. [test_data.sql](test_data.sql)
 
 ---
 
