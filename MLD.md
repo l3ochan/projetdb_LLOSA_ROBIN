@@ -6,3 +6,6 @@
 | **Client** | **\*Reference_unique**, Statut_juridique, Nom, Prenom, Telephone, Email, Adresse_postale |
 | **Bon_de_commande** | **\*Reference**, Date_d_emission, Mode_de_financement, Date_de_livraison, **#Matricule**, **#Reference_unique**, **#VIN** |
 | **Photo** | **\*id_photo**, URL, rang, **#VIN** |
+
+
+![image](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/raw/branch/main/MLD.png)
