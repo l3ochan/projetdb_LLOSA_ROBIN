@@ -171,4 +171,4 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 ## Espace de travail utilisé
 
 - Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
-- Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver, Nekocorp IS.
+- Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver, Nekocorp, Docker.
