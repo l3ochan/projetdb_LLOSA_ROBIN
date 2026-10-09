@@ -169,7 +169,7 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 ---
 
-> [!INFO]
+> [!NOTE]
 >
 > L'IA générative a été utilisé pour les aspects suivants de ce projet :
 > - Génération du prompt initial
