@@ -183,6 +183,6 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 - Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
 - Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver, Nekocorp, Docker.
 
----
+
 
 [^1]: Ce snippet de code ainsi que son explication font référence a un projet académique passé lors duquel [@leo](https://git.nekocorp.fr/leo) a du créer un site de vente de particuliers a particuliers sur le thème de l'automobile. [Voir le dépot](https://git.nekocorp.fr/leo/projetr209)
