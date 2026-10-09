@@ -151,7 +151,7 @@ Le stockage de ce type de données sous forme étendue en `VARCHAR` n'est pas la
 
 Performances et empreinte mémoire : Un entier sur 1 octet (`TINYINT`) allège considérablement la table et les index d'arbre (B-Tree), accélérant les filtres et tris SQL.
 Internationalisation (i18n) et évolutivité : En cas d'expansion à l'international ou de changement de formulation par le marketing, la base de données reste inchangée : seul le mapping applicatif est adapté.
-Exemple d'implémentation applicative moderne (PHP 8+) :
+Exemple d'implémentation applicative moderne (PHP 8+)[^1] :
 
 ```php 
 $lifecycleLabel = match (intval($row['Cycle_de_vie'])) {
@@ -182,3 +182,7 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 - Environnement distant : https://git.nekocorp.fr/EFREI-Projects/kasm_db_workbench
 - Outils : Looping (MCD / MLD), MariaDB 10.11, DBeaver, Nekocorp, Docker.
+
+---
+
+[^1]Ce snippet de code ainsi que son explication font référence a un projet académique passé lors duquel @leo créer un site de vente de particuliers a particuliers sur le thème de l'automobile. [Voir le dépot](https://git.nekocorp.fr/leo/projetr209)
