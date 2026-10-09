@@ -185,4 +185,4 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 ---
 
-[^1]Ce snippet de code ainsi que son explication font référence a un projet académique passé lors duquel @leo créer un site de vente de particuliers a particuliers sur le thème de l'automobile. [Voir le dépot](https://git.nekocorp.fr/leo/projetr209)
+[^1]Ce snippet de code ainsi que son explication font référence a un projet académique passé lors duquel [@leo](https://git.nekocorp.fr/leo) créer un site de vente de particuliers a particuliers sur le thème de l'automobile. [Voir le dépot](https://git.nekocorp.fr/leo/projetr209)
