@@ -169,15 +169,14 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 ---
 
-## Transparence IA 
-
-L'IA générative a été utilisé pour les aspects suivants de ce projet : 
-- Génération du prompt initial
-- Génération du cahier des charges
-- Générations des règles métier
-- Génération du jeu de données de test
-- Reformulation & mise en page de ce README
-
+> [!INFO]
+>
+> L'IA générative a été utilisé pour les aspects suivants de ce projet :
+> - Génération du prompt initial
+> - Génération du cahier des charges
+> - Générations des règles métier
+> - Génération du jeu de données de test
+> - Reformulation & mise en page de ce README
 
 ## Espace de travail utilisé
 
