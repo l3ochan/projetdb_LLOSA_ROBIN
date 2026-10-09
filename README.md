@@ -171,10 +171,10 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 > [!NOTE]
 >
-> L'IA générative a été utilisé pour les aspects suivants de ce projet :
-> - Génération du [prompt initial](#Prompt initial)
-> - Génération des [règles métier](#1. Règles de gestion (Métier))
-> - Génération du [dictionnaire de données brutes](#2. Dictionnaire de données brutes)
+> L'IA générative a été utilisée pour les aspects suivants de ce projet :
+> - Génération du [prompt initial](#prompt-initial)
+> - Génération des [règles métier](#1-règles-de-gestion-métier)
+> - Génération du [dictionnaire de données brutes](#2-dictionnaire-de-données-brutes)
 > - Génération du [jeu de données de test](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/src/branch/main/db/test_data.sql)
 > - Reformulation & mise en page de ce README
 
