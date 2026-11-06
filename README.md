@@ -132,7 +132,7 @@ Le schéma relationnel produit respecte les règles de la **3ème Forme Normale 
 
 ## 6. Modèle Physique de Données (MPD / LDD SQL)
 
-cf. [1_insertion.sql](db/1_insertion.sql)
+cf. [1_creation.sql](db/1_creation.sql)<br>
 cf. [2_contraintes.sql](db/2_contraintes.sql)
 
 ---
