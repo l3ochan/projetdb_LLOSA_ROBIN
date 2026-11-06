@@ -132,13 +132,14 @@ Le schéma relationnel produit respecte les règles de la **3ème Forme Normale 
 
 ## 6. Modèle Physique de Données (MPD / LDD SQL)
 
-cf. [scheme.sql](db/scheme.sql)
+cf. [1_insertion.sql](db/1_insertion.sql)
+cf. [2_contraintes.sql](db/2_contraintes.sql)
 
 ---
 
 ## 7. Jeu de données de test
 
-cf. [test_data.sql](db/test_data.sql)  
+cf. [3_insertion.sql](db/3_insertion.sql)  
 dump de la base de données de test [link](db/dump-td-202610080919.sql)
 
 ---
@@ -180,6 +181,7 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 | **Chef d'atelier / Reconditionnement** | Organisation des flux de préparation et suivi logistique des entrées de stock. | Véhicules au statut `En arrivage` ou `Reconditionnement atelier`, concessions de rattachement, photos manquantes. |
 | **Webmaster / Content Manager** | Audit de la vitrine digitale pour s'assurer que chaque véhicule en ligne dispose de ses photos ordonnées. | Véhicules en ligne sans visuel (rang 1 manquant), URLs d'images, galeries photos par VIN. |
 
+cf. [4_interrogation.sql](db/4_interrogation.sql) 
 
 ---
 
