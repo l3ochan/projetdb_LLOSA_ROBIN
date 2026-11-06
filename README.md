@@ -303,6 +303,7 @@ Le **Plan B** est retenu par les optimiseurs de SGBD (comme l'optimiseur de coû
 > - Génération du [dictionnaire de données brutes](#2-dictionnaire-de-données-brutes)
 > - Génération du [jeu de données de test](https://git.nekocorp.fr/EFREI-Projects/Intro-BDD-Miniprojet-1/src/branch/main/db/test_data.sql)
 > - Reformulation & mise en page de ce README
+> - Plan et parties du script de la vidéo
 
 ## Espace de travail utilisé
 
