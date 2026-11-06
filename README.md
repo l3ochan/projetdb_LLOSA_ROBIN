@@ -169,6 +169,130 @@ echo "<div class='badge'>Statut : {$lifecycleLabel}</div>";
 
 ---
 
+
+## 9. Cas d'utilisations de la base de données 
+
+| Rôle | Objectif métier | Données ciblées |
+| :--- | :--- | :--- |
+| **Directeur de plaque / Réseau** | Suivi du chiffre d'affaires, pilotage global du réseau et performance commerciale par concession. | CA total généré, volume de ventes par vendeur et par point de vente, prix moyen du stock. |
+| **Responsable des ventes / Chef des ventes** | Suivi de l'état des commandes en cours, vérification des livraisons à planifier et pilotage des financements. | Bons de commande avec dates prévisionnelles, modes de financement (crédit, comptant, LOA), identité des acheteurs. |
+| **Conseiller commercial** | Recherche de véhicules éligibles pour un client (budget, carburant, boîte) et consultation de sa propre file de commandes. | Véhicules en stock (`En stock / En ligne`), caractéristiques techniques, prix TTC, historique client. |
+| **Chef d'atelier / Reconditionnement** | Organisation des flux de préparation et suivi logistique des entrées de stock. | Véhicules au statut `En arrivage` ou `Reconditionnement atelier`, concessions de rattachement, photos manquantes. |
+| **Webmaster / Content Manager** | Audit de la vitrine digitale pour s'assurer que chaque véhicule en ligne dispose de ses photos ordonnées. | Véhicules en ligne sans visuel (rang 1 manquant), URLs d'images, galeries photos par VIN. |
+
+
+---
+
+## 10. Etude du meilleur plan d'execution en Algebre relationnelle 
+
+On analyse la requête suivante, qui mobilise **3 opérateurs distincts** :
+* Une **Sélection** ($\sigma$)
+* Une **Jointure** ($\bowtie$)
+* Une **Projection** ($\pi$)
+
+### Énoncé de la requête cible
+> *« Obtenir la marque, le modèle et l'URL de la photo principale (rang = 1) pour les véhicules rattachés à la concession de Nantes. »*
+
+En SQL :
+```sql
+SELECT V.Marque, V.Modele, P.URL
+FROM Vehicule V
+INNER JOIN Photo P ON V.VIN = P.VIN
+WHERE V.Nom_commercial = 'Autosphere Nantes Ouest'
+  AND P.rang = 1;
+```
+
+---
+
+### Données initiales (cardinalités réelles du jeu de test)
+* Table `Vehicule` : **4 lignes** (dont 2 rattachées à `'Autosphere Nantes Ouest'`).
+* Table `Photo` : **5 lignes** (dont 3 avec `rang = 1`).
+
+---
+
+### Plan A : Plan naïf / non optimisé (Jointure d'abord, sélections et projections à la fin)
+
+Dans ce plan, le SGBD effectue d'abord le produit cartésien / la jointure complète de toutes les lignes, avant de filtrer les conditions.
+
+$$\text{Expression : } \pi_{\text{Marque, Modele, URL}} \Big( \sigma_{\text{Nom\_commercial} = \text{'Autosphere Nantes Ouest'} \ \wedge \ \text{rang} = 1} (Vehicule \bowtie_{V.VIN = P.VIN} Photo) \Big)$$
+
+```mermaid
+graph BT
+    %% Feuilles (Tables sources)
+    V["Vehicule<br/><b>4 lignes</b>"]
+    P["Photo<br/><b>5 lignes</b>"]
+
+    %% Jointure
+    JOIN["⨝ (Vehicule.VIN = Photo.VIN)<br/><b>5 lignes</b>"]
+
+    %% Sélection globale
+    SEL["σ (Nom_commercial = 'Autosphere Nantes Ouest' ∧ rang = 1)<br/><b>2 lignes</b>"]
+
+    %% Projection finale
+    PROJ["π (Marque, Modele, URL)<br/><b>2 lignes</b>"]
+
+    %% Liaisons de bas en haut
+    V --> JOIN
+    P --> JOIN
+    JOIN --> SEL
+    SEL --> PROJ
+```
+
+* **Étape 1 :** Chargement complet des tables $\rightarrow$ `Vehicule` (4 lignes) et `Photo` (5 lignes).
+* **Étape 2 :** Jointure complète $\bowtie$ $\rightarrow$ **5 lignes** en mémoire tampon (chaque photo trouve son véhicule).
+* **Étape 3 :** Double sélection $\sigma$ $\rightarrow$ réduction à **2 lignes** (la Clio et la 208).
+* **Étape 4 :** Projection finale $\pi$ $\rightarrow$ **2 lignes** avec 3 colonnes.
+
+---
+
+### Plan B : Plan optimisé (Poussée des sélections et des projections au plus tôt)
+
+**Règle d'or de l'optimiseur de requêtes :** Appliquer les sélections ($\sigma$) et projections ($\pi$) au plus près des feuilles de l'arbre pour réduire immédiatement la volumétrie des relations intermédiaires avant d'exécuter la jointure ($\bowtie$).
+
+$$\text{Expression : } \pi_{\text{Marque, Modele, URL}} \Big( \sigma_{\text{Nom\_commercial} = \text{'Autosphere Nantes Ouest'}}(Vehicule) \ \bowtie_{V.VIN = P.VIN} \ \sigma_{\text{rang} = 1}(Photo) \Big)$$
+
+```mermaid
+graph BT
+    %% Feuilles (Tables sources)
+    V["Vehicule<br/><b>4 lignes</b>"]
+    P["Photo<br/><b>5 lignes</b>"]
+
+    %% Sélections préalables (Push-down)
+    SELV["σ (Nom_commercial = 'Autosphere Nantes Ouest')<br/><b>2 lignes</b>"]
+    SELP["σ (rang = 1)<br/><b>3 lignes</b>"]
+
+    %% Jointure sur données filtrées
+    JOIN["⨝ (Vehicule.VIN = Photo.VIN)<br/><b>2 lignes</b>"]
+
+    %% Projection finale
+    PROJ["π (Marque, Modele, URL)<br/><b>2 lignes</b>"]
+
+    %% Liaisons de bas en haut
+    V --> SELV
+    P --> SELP
+    SELV --> JOIN
+    SELP --> JOIN
+    JOIN --> PROJ
+```
+
+* **Étape 1 :** Sélections immédiates sur les tables sources :
+  * $\sigma_{\text{Nom\_commercial}=\dots}(Vehicule)$ : passe de 4 à **2 lignes**.
+  * $\sigma_{\text{rang}=1}(Photo)$ : passe de 5 à **3 lignes**.
+* **Étape 2 :** Jointure $\bowtie$ appliquée sur des tables déjà réduites ($2 \times 3$ comparaisons potentielles au lieu de $4 \times 5$) $\rightarrow$ **2 lignes** produites.
+* **Étape 3 :** Projection finale $\pi$ $\rightarrow$ **2 lignes** résultat.
+
+---
+
+### Conclusion comparative
+
+| Critère | Plan A (Naïf) | Plan B (Optimisé) |
+| :--- | :---: | :---: |
+| **Lignes traitées lors de la jointure** | 5 lignes (sur $4 \times 5$ combinaisons) | **2 lignes** (sur $2 \times 3$ combinaisons) |
+| **Mémoire tampon / RAM requise** | Élevée (lignes volumineuses jointes) | **Minimale** (filtrage préalable) |
+| **Coût CPU** | Plus élevé | **Optimal** |
+
+Le **Plan B** est retenu par les optimiseurs de SGBD (comme l'optimiseur de coût de MariaDB / MySQL) car la « poussée des sélections » (*push-down predicate*) divise drastiquement l'espace mémoire nécessaire et le nombre d'évaluations de clés étrangères lors de la jointure.
+
 > [!NOTE]
 >
 > L'IA générative a été utilisée pour les aspects suivants de ce projet :
