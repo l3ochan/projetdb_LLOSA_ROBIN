@@ -1,5 +1,15 @@
 # Miniprojet 1 - Conception de Base de Données (MERISE)
 
+> [!Warning]
+> 
+> **Note concernant la composition du groupe et le rendu :**
+> 
+> Initialement prévu en binôme, ce projet a finalement été réalisé individuellement par **Léonard-Anton LLOSA**. D'un commun accord, **Lukyan ROBIN** a rejoint un autre groupe qui n'avait pas terminé, le Dimanche 08 Novembre au soir. 
+> 
+> Le nom du dépôt contient toujours nos deux noms afin de ne pas modifier l'URL et d'éviter tout incident lors de la transmission ou de l'évaluation du rendu. Ce dépôt reflète donc uniquement mon travail.
+
+
+
 ## Contexte & Cahier des charges
 
 ### Prompt initial
